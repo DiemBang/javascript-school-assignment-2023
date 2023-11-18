@@ -31,81 +31,83 @@ const dessert = [
         name: 'Matcha brownie',
         price: 42,
         amount: 0,
-        category: 'Culinary', //premium or ceremonial
-        rating:
+        category: 'Culinary', //ceremonial, premium or culinary
+        rating: 4, //scale 1-5
         image: '',
     },
     {
         name: 'Matcha cheesecake',
         price: 48,
         amount: 0,
-        category: 'Premium,
-        rating:
+        category: 'Premium',
+        rating: 4,
         image: '',
     },
     {
-        name: 'Matcha cookie with white chocolate'
+        name: 'Matcha cookie with white chocolate',
         price: 38,
         amount: 0,
         category: 'Culinary',
-        rating:
+        rating: 3,
         image: '',
     },
     {
-        name: 'Matcha donut'
+        name: 'Matcha donut',
         price: 38,
         amount: 0,
         category: 'Culinary',
-        rating:
+        rating: 3,
         image: '',
     },
     {
-        name: 'Matcha lava cake'
+        name: 'Matcha lava cake',
         price: 48,
         amount: 0,
         category: 'Premium',
-        rating:
+        rating: 4,
         image: '',
     },
     {
-        name: 'Matcha macaroons'
+        name: 'Matcha macaroons',
         price: 48,
         amount: 0,
         category: 'Premium',
-        rating:
+        rating: 4,
         image: '',
     },
     {
-        name: 'Matcha mille crepe cake'
+        name: 'Matcha mille crepe cake',
         price: 52,
         amount: 0,
         category: 'Ceremonial',
-        rating:
+        rating: 5,
         image: '',
     },
     {
-        name: 'Matcha mochie'
+        name: 'Matcha mochie',
         price: 42,
         amount: 0,
         category: 'Premium',
-        rating:
+        rating: 2,
         image: '',
     },
     {
-        name: 'Matcha souffle pancakes'
+        name: 'Matcha souffle pancakes',
         price: 82,
         amount: 0,
         category: 'Ceremonial',
-        rating:
+        rating: 5,
         image: '',
     },
     {
-        name: 'Matcha soft serve'
+        name: 'Matcha soft serve',
         price: 58,
         amount: 0,
         category: 'Ceremonial',
-        rating:
+        rating: 4, 
         image: '',
     }
 
 ];
+
+console.log(dessert);
