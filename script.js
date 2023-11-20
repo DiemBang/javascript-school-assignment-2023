@@ -171,7 +171,7 @@ function printDesserts() {
             <article>
                 <h3>${dessert.name}</h3>
                 <div>Price: <span>${dessert.price}</span> kr</div>
-                <div>Rating: <span>${dessert.rating}</span> kr</div>
+                <div>Rating: <span>${dessert.rating}</span></div>
                 <button>-</button>
                 <button>+</button>
             </article>
