@@ -26,70 +26,112 @@ Formulär för kunduppgifter:
 
 */
 
-const dessert = [
+const productHtmlContainer = document.querySelector('#productListing');  
+
+const desserts = [
     {
-        name: 'Matcha brownie',
+        name: 'Brownie',
         price: 42,
         amount: 0,
         category: 'Culinary', //ceremonial, premium or culinary
         rating: 4, //scale 1-5
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha cheesecake',
+        name: 'Cheesecake',
         price: 48,
         amount: 0,
         category: 'Premium',
         rating: 4,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha cookie with white chocolate',
+        name: 'Cookie with white chocolate',
         price: 38,
         amount: 0,
         category: 'Culinary',
         rating: 3,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha donut',
+        name: 'Donut',
         price: 38,
         amount: 0,
         category: 'Culinary',
         rating: 3,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha lava cake',
+        name: 'Lava cake',
         price: 48,
         amount: 0,
         category: 'Premium',
         rating: 4,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha macaroons',
+        name: 'Macaroons',
         price: 48,
         amount: 0,
         category: 'Premium',
         rating: 4,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha mille crepe cake',
+        name: 'Mille crepe cake',
         price: 52,
         amount: 0,
         category: 'Ceremonial',
         rating: 5,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
-        name: 'Matcha mochie',
+        name: 'Mochie',
         price: 42,
         amount: 0,
         category: 'Premium',
         rating: 2,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
         name: 'Matcha souffle pancakes',
@@ -97,7 +139,12 @@ const dessert = [
         amount: 0,
         category: 'Ceremonial',
         rating: 5,
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     },
     {
         name: 'Matcha soft serve',
@@ -105,9 +152,32 @@ const dessert = [
         amount: 0,
         category: 'Ceremonial',
         rating: 4, 
-        image: '',
+        image: {
+            src: '',
+            alt: '',
+            width: '',
+            height: '',
+        }
     }
 
 ];
 
-console.log(dessert);
+function printDesserts() {
+    productHtmlContainer.innerHTML = '';
+
+    desserts.forEach(function(dessert) {
+        productHtmlContainer.innerHTML += 
+        `
+            <article>
+                <h3>${dessert.name}</h3>
+                <div>Price: <span>${dessert.price}</span> kr</div>
+                <div>Rating: <span>${dessert.rating}</span> kr</div>
+                <button>-</button>
+                <button>+</button>
+            </article>
+        `;
+
+    });
+}
+
+printDesserts();
