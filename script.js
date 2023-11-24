@@ -113,10 +113,10 @@ const desserts = [
         category: 'Ceremonial',
         rating: 5,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/millefeuille.png',
+            alt: 'Matcha mille feuille cake',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -126,10 +126,10 @@ const desserts = [
         category: 'Premium',
         rating: 2,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/mochie.png',
+            alt: 'Matcha mochie',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -139,10 +139,10 @@ const desserts = [
         category: 'Ceremonial',
         rating: 5,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/pancakes.png',
+            alt: 'Fluffy matcha souffle pancakes',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -152,10 +152,10 @@ const desserts = [
         category: 'Ceremonial',
         rating: 4, 
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/softserve.png',
+            alt: 'Matcha soft serve icecream',
+            width: '100',
+            height: '200',
         }
     }
 
