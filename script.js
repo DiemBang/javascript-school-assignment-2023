@@ -192,7 +192,7 @@ function getPriceMultiplier() {
 
 }
 
-function printDesserts() {
+function printProductList() {
     productHtmlContainer.innerHTML = '';
 
     let priceIncrease = getPriceMultiplier();
@@ -201,16 +201,22 @@ function printDesserts() {
         productHtmlContainer.innerHTML += 
         `
             <article>
-                <h3>${dessert.name}</h3>
                 <img src="${dessert.image.src}" alt="${dessert.image.alt}" width="${dessert.image.width}" height="${dessert.image.height}" loading="lazy">
+                <h3>${dessert.name}</h3>
                 <div>Price: <span>${dessert.price * priceIncrease}</span> kr</div>
                 <div>Rating: <span>${dessert.rating}</span></div>
-                <div>Amount: <span>${dessert.amount}</span></div>
+                <div>Quantity: <span>${dessert.amount}</span></div>
                 <button class="minus" data-id="${index}">-</button>
                 <button class="plus" data-id="${index}">+</button>
             </article>
         `;
     });
+}
+
+function printDesserts() {
+    
+    printProductList();
+    printCartDesserts();
     
     const minusBtns = document.querySelectorAll('button.minus');
     const plusBtns = document.querySelectorAll('button.plus');
@@ -222,7 +228,7 @@ function printDesserts() {
     plusBtns.forEach(function(btn) {
         btn.addEventListener('click', increaseAmount);
     });
-    printCartDesserts();
+    
 }
 
 
@@ -236,7 +242,7 @@ function printCartDesserts() {
     let priceIncrease = getPriceMultiplier();
  
     //cart
-    desserts.forEach(function(dessert) {
+    desserts.forEach(function(dessert, index) {
         orderedDessertAmount += dessert.amount;
         if (dessert.amount > 0) {
             let dessertPrice = dessert.price;
@@ -248,8 +254,11 @@ function printCartDesserts() {
             sum += dessert.amount * dessert.price;
 
             cartHtmlContainer.innerHTML += `
-            <article>
+            <article class>
+                <img src="${dessert.image.src}" 
                 <span>${dessert.name}</span> | <span>${dessert.amount}</span> | <span>${dessert.amount * adjustedDessertPrice} kr</span>
+                <button class="minus" data-id="${index}">-</button>
+                <button class="plus" data-id="${index}">+</button>
             </article>
             `;
         }
