@@ -163,6 +163,14 @@ const desserts = [
 
 function tooSlowCustomerMessage() {
     alert('You took too long to order!');
+    clearCart();
+}
+
+function clearCart() {
+    desserts.forEach(function(dessert) {
+        dessert.amount = 0;
+    });
+    printDesserts();
 }
 
 function decreaseAmount(e) {
@@ -213,11 +221,7 @@ function printProductList() {
     });
 }
 
-function printDesserts() {
-    
-    printProductList();
-    printCartDesserts();
-    
+function addButtonEventListeners() {
     const minusBtns = document.querySelectorAll('button.minus');
     const plusBtns = document.querySelectorAll('button.plus');
 
@@ -228,9 +232,16 @@ function printDesserts() {
     plusBtns.forEach(function(btn) {
         btn.addEventListener('click', increaseAmount);
     });
-    
 }
 
+//add html based on desserts array
+function printDesserts() {
+    
+    printProductList();
+    printCartDesserts();
+    addButtonEventListeners();
+
+}
 
 
 function printCartDesserts() {
@@ -254,8 +265,8 @@ function printCartDesserts() {
             sum += dessert.amount * dessert.price;
 
             cartHtmlContainer.innerHTML += `
-            <article class>
-                <img src="${dessert.image.src}" 
+            <article class = "product-in-cart">
+                <img src="${dessert.image.src}" alt="${dessert.image.alt}" loading="lazy">
                 <span>${dessert.name}</span> | <span>${dessert.amount}</span> | <span>${dessert.amount * adjustedDessertPrice} kr</span>
                 <button class="minus" data-id="${index}">-</button>
                 <button class="plus" data-id="${index}">+</button>

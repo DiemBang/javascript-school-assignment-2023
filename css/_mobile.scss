@@ -1,5 +1,19 @@
+.sort-by-icons img {
+    display: inline-block;
+}
+
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
+
+.product-in-cart {
+    display: inline-block;
+}
+
+.product-in-cart img {
+    max-width: 100px;
+    height: auto;
+    display: inline-block;
+} 
