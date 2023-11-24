@@ -1,15 +1,6 @@
 
 /*
 
-Produktlista:
-- Skapa produktlista i en object/array med 4 properties: namn, pris, rating och kategori
-- Skapa en plus och minusknapp för varje produkt
-- Plusknapp: När man klickar på plus ska varan läggas till i varukorgen och totalsumman ska uppdateras
-Start:
-Minusknapp: Varan ska dras bort från varukorgen och totalsumman ska uppdateras
-
-- Totalsumman ska vara 0 innan man har lagt till något
-
 Headern med varukorgsymbol och totalt pris:
 Varukorgsymbolen ska uppdateras när man lägger till eller ta bort vara
 Totalt pris ska uppdateras när man lägger till eller ta bort vara
@@ -27,6 +18,14 @@ Formulär för kunduppgifter:
 */
 
 const productHtmlContainer = document.querySelector('#productListing');  
+const cartHtmlContainer = document.querySelector('#orderSummary');
+const today = new Date();
+
+const isFriday = today.getDay() === 6;
+const isMonday = today.getDay() === 1;
+const currentHour = today.getHours();
+
+let slownessTimeout = setTimeout(tooSlowCustomerMessage, 1000 * 60 * 15);
 
 const desserts = [
     {
@@ -36,10 +35,10 @@ const desserts = [
         category: 'Culinary', //ceremonial, premium or culinary
         rating: 4, //scale 1-5
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/brownies.png',
+            alt: 'Matcha brownies with chocolate chip',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -49,10 +48,10 @@ const desserts = [
         category: 'Premium',
         rating: 4,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/cheesecake.png',
+            alt: 'Matcha cheesecake',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -62,10 +61,10 @@ const desserts = [
         category: 'Culinary',
         rating: 3,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/cookie.png',
+            alt: 'Matcha cookie with white chocolate chip',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -75,10 +74,10 @@ const desserts = [
         category: 'Culinary',
         rating: 3,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/donuts.png',
+            alt: 'Matcha donuts',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -88,10 +87,10 @@ const desserts = [
         category: 'Premium',
         rating: 4,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/lavacake.png',
+            alt: 'Gooey lava cake with matcha filling',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -101,10 +100,10 @@ const desserts = [
         category: 'Premium',
         rating: 4,
         image: {
-            src: '',
-            alt: '',
-            width: '',
-            height: '',
+            src: '../assets/images/macaroons.png',
+            alt: 'Matcha macaroons',
+            width: '100',
+            height: '200',
         }
     },
     {
@@ -134,7 +133,7 @@ const desserts = [
         }
     },
     {
-        name: 'Matcha souffle pancakes',
+        name: 'Souffle pancakes',
         price: 82,
         amount: 0,
         category: 'Ceremonial',
@@ -147,7 +146,7 @@ const desserts = [
         }
     },
     {
-        name: 'Matcha soft serve',
+        name: 'Soft serve',
         price: 58,
         amount: 0,
         category: 'Ceremonial',
@@ -162,22 +161,117 @@ const desserts = [
 
 ];
 
+function tooSlowCustomerMessage() {
+    alert('You took too long to order!');
+}
+
+function decreaseAmount(e) {
+    const index = e.currentTarget.dataset.id;
+    if (desserts[index].amount <= 0) {
+        desserts[index].amount = 0;
+    } else {
+    desserts[index].amount -= 1
+    }
+    printDesserts();
+}
+
+function increaseAmount(e) {
+    const index = e.currentTarget.dataset.id;
+    desserts[index].amount += 1
+    printDesserts();
+}
+
+
+//friday & > 15.00 && monday & <= 3
+function getPriceMultiplier() {
+    if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
+        return 1.15; 
+    } else {
+        return 1;
+    }
+
+}
+
 function printDesserts() {
     productHtmlContainer.innerHTML = '';
 
-    desserts.forEach(function(dessert) {
+    let priceIncrease = getPriceMultiplier();
+
+    desserts.forEach(function(dessert, index) {
         productHtmlContainer.innerHTML += 
         `
             <article>
                 <h3>${dessert.name}</h3>
-                <div>Price: <span>${dessert.price}</span> kr</div>
+                <img src="${dessert.image.src}" alt="${dessert.image.alt}" width="${dessert.image.width}" height="${dessert.image.height}" loading="lazy">
+                <div>Price: <span>${dessert.price * priceIncrease}</span> kr</div>
                 <div>Rating: <span>${dessert.rating}</span></div>
-                <button>-</button>
-                <button>+</button>
+                <div>Amount: <span>${dessert.amount}</span></div>
+                <button class="minus" data-id="${index}">-</button>
+                <button class="plus" data-id="${index}">+</button>
             </article>
         `;
-
     });
+    
+    const minusBtns = document.querySelectorAll('button.minus');
+    const plusBtns = document.querySelectorAll('button.plus');
+
+    minusBtns.forEach(function(btn) {
+        btn.addEventListener('click', decreaseAmount);
+    });
+
+    plusBtns.forEach(function(btn) {
+        btn.addEventListener('click', increaseAmount);
+    });
+    printCartDesserts();
+}
+
+
+
+function printCartDesserts() {
+    cartHtmlContainer.innerHTML = '';
+
+    let sum = 0;
+    let orderedDessertAmount = 0;
+    let msg = '';
+    let priceIncrease = getPriceMultiplier();
+ 
+    //cart
+    desserts.forEach(function(dessert) {
+        orderedDessertAmount += dessert.amount;
+        if (dessert.amount > 0) {
+            let dessertPrice = dessert.price;
+            if (dessert.amount >= 10) { //10% discount
+                dessertPrice *= 0.9;
+            }
+            const adjustedDessertPrice = dessert.price * priceIncrease;
+
+            sum += dessert.amount * dessert.price;
+
+            cartHtmlContainer.innerHTML += `
+            <article>
+                <span>${dessert.name}</span> | <span>${dessert.amount}</span> | <span>${dessert.amount * adjustedDessertPrice} kr</span>
+            </article>
+            `;
+        }
+    });
+
+    if (sum <= 0) {
+        return;
+    }
+
+    if (today.getDay() === 1){
+        sum *= 0.9;
+        msg += '<p>Monday discount: 10% off on your order';
+    }
+
+    cartHtmlContainer.innerHTML += `<p>Cart subtotal: ${sum} kr</p>`;
+    cartHtmlContainer.innerHTML += `<div>${msg}</div>`;
+
+    if (orderedDessertAmount > 15) {
+        cartHtmlContainer.innerHTML += '<p>Shipping: 0 kr</p>';
+    } else {
+        cartHtmlContainer.innerHTML += `<p>Shipping: ${Math.round(25 + (0.1 * sum))} kr</p>`
+    }
 }
 
 printDesserts();
