@@ -16,7 +16,7 @@ Rabattkod: Visa kodfält när man klickar
 Formulär för kunduppgifter:
 
 */
-
+const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');  
 const cartHtmlContainer = document.querySelector('#orderSummary');
 const today = new Date();
@@ -161,6 +161,16 @@ const desserts = [
 
 ];
 
+//update total amound in header
+function updateTotalAmount() {
+    headerSubtotal.innerHTML = '';
+    let sum = calculateSum();
+    headerSubtotal.innerHTML += `
+    <span>${sum} kr</span>
+    `;
+   
+}
+
 function tooSlowCustomerMessage() {
     alert('You took too long to order!');
     clearCart();
@@ -239,17 +249,27 @@ function addButtonEventListeners() {
 //add html based on desserts array
 function printDesserts() {
     
+    updateTotalAmount();
     printProductList();
     printCartDesserts();
     addButtonEventListeners();
 
 }
 
+function calculateSum() {
+    let sum = 0;
+    let priceIncrease = getPriceMultiplier();
+
+    desserts.forEach(function(dessert) {
+        sum += Math.round((dessert.amount * dessert.price) * priceIncrease);
+
+    });
+    return sum;
+}
 
 function printCartDesserts() {
     cartHtmlContainer.innerHTML = '';
 
-    let sum = 0;
     let orderedDessertAmount = 0;
     let msg = '';
     let priceIncrease = getPriceMultiplier();
@@ -264,7 +284,6 @@ function printCartDesserts() {
             }
             const adjustedDessertPrice = dessert.price * priceIncrease;
 
-            sum += dessert.amount * dessert.price;
 
             cartHtmlContainer.innerHTML += `
             <article class = "product-in-cart">
@@ -276,6 +295,8 @@ function printCartDesserts() {
             `;
         }
     });
+
+    let sum = calculateSum();
 
     if (sum <= 0) {
         return;
