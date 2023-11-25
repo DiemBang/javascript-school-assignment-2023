@@ -3,45 +3,60 @@
 
 <head>
     <meta property="og:title" content="Matcha Munchies - a specialised dessert shop">
-    <meta property="og:description"
-      content="An authentic matcha dessert shop using the finest matcha from Japan">
+    <meta property="og:description" content="An authentic matcha dessert shop using the finest matcha from Japan">
     <meta property="og:image" content="assets/photos/edgar-castrejon-1SPu0KT-Ejg-unsplash-800x1000.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="rgb(172, 118, 255)">
     <title>Matcha Munchies</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;400;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
     <header>
         <h1>Matcha Munchies</h1>
         <div class="cartAndNumber">
-            <img id="cartIcon" src="../assets/icons/cart-shopping-solid.svg" alt="shopping cart icon" width="30px" height="30px">
+            <img id="cartIcon" src="../assets/icons/cart-shopping-solid.svg" alt="shopping cart icon" width="30px"
+                height="30px">
             <div class="cartNumber" id="cartNumber">5</div>
-        </div>
-        <div class="sort-by-icons">
-            <img id="starIcon" src="../assets/icons/star-solid.svg" alt="sort by rating icon" width="30px" height="30px">
-            <img id="nameIcon" src="../assets/icons/arrow-down-a-z-solid.svg" alt="sort by name icon" width="30px" height="30px">
-            <img id="priceIcon" src="../assets/icons/arrow-down-1-9-solid.svg" alt="sort by price icon" width="30px" height="30px">
-            <img id="categoryIcon" src="../assets/icons/filter-solid.svg" alt="sort by category icon" width="30px" height="30px">
+            <div class="totalAmount"></div>
         </div>
     </header>
     <main>
-        <h2>Sweet dreams are made of matcha</h2>
-        <div id="productListing">
-  
+        <div class="page1">
+            <h2>Sweet dreams are made of matcha</h2>
+            <div class="sort-by-icons">
+                <img id="starIcon" src="../assets/icons/star-solid.svg" alt="sort by rating icon" width="30px"
+                    height="30px">
+                <img id="nameIcon" src="../assets/icons/arrow-down-a-z-solid.svg" alt="sort by name icon" width="30px"
+                    height="30px">
+                <img id="priceIcon" src="../assets/icons/arrow-down-1-9-solid.svg" alt="sort by price icon" width="30px"
+                    height="30px">
+                <img id="categoryIcon" src="../assets/icons/filter-solid.svg" alt="sort by category icon" width="30px"
+                    height="30px">
+            </div>
+            <div id="productListing">
+
+            </div>
         </div>
-        <h2>Your shopping cart</h2>
-        <div id="orderSummary">
-           
+        <div class="page2">
+            <h2>Your shopping cart</h2>
+            <div id="orderSummary">
+
+            </div>
         </div>
-        <div class="order-form">
-            <h2>Contact details</h2>
-            <input type="text">
-        </div>
-        <div class="order-confirmation">
-            <h2>Order confirmation</h2>
+        <div class="page3">
+            <div class="order-form">
+                <h2>Contact details</h2>
+                <input type="text">
+            </div>
+            <div class="order-confirmation">
+                <h2>Order confirmation</h2>
+            </div>
         </div>
     </main>
     <script type="module" src="script.js"></script>

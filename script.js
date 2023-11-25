@@ -208,10 +208,10 @@ function printProductList() {
     desserts.forEach(function(dessert, index) {
         productHtmlContainer.innerHTML += 
         `
-            <article>
+            <article class="product">
                 <img src="${dessert.image.src}" alt="${dessert.image.alt}" width="${dessert.image.width}" height="${dessert.image.height}" loading="lazy">
                 <h3>${dessert.name}</h3>
-                <div>Price: <span>${dessert.price * priceIncrease}</span> kr</div>
+                <div>Price: <span>${Math.round(dessert.price * priceIncrease)}</span> kr</div>
                 <div>Rating: <span>${dessert.rating}</span></div>
                 <div>Quantity: <span>${dessert.amount}</span></div>
                 <button class="minus" data-id="${index}">-</button>
@@ -267,7 +267,7 @@ function printCartDesserts() {
             cartHtmlContainer.innerHTML += `
             <article class = "product-in-cart">
                 <img src="${dessert.image.src}" alt="${dessert.image.alt}" loading="lazy">
-                <span>${dessert.name}</span> | <span>${dessert.amount}</span> | <span>${dessert.amount * adjustedDessertPrice} kr</span>
+                <span>${dessert.name}</span> | <span>Quantity: ${dessert.amount}</span> | <span>Subtotal: ${Math.round(dessert.amount * adjustedDessertPrice)} kr</span>
                 <button class="minus" data-id="${index}">-</button>
                 <button class="plus" data-id="${index}">+</button>
             </article>
