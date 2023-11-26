@@ -20,6 +20,9 @@ const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');  
 const cartHtmlContainer = document.querySelector('#orderSummary');
 const sortNameIcon = document.querySelector('#nameIcon');
+const sortPriceIcon = document.querySelector('#priceIcon');
+const sortCategoryIcon = document.querySelector('#categoryIcon');
+const sortRatingIcon = document.querySelector('#starIcon');
 const today = new Date();
 
 const isFriday = today.getDay() === 6;
@@ -184,7 +187,13 @@ sortNameIcon.addEventListener('click', sortDessertsByName);
 function sortPrice(dessert1, dessert2) {
     return dessert1.price - dessert2.price;
 }
-desserts.sort(sortPrice);
+
+function sortDessertsByPrice() {
+    desserts.sort(sortPrice);
+    printDesserts();
+}
+
+sortPriceIcon.addEventListener('click', sortDessertsByPrice);
 
 
 function sortCategory(dessert1, dessert2) {
@@ -196,12 +205,25 @@ function sortCategory(dessert1, dessert2) {
         return 0;
     }
 }
-desserts.sort(sortCategory);
+
+function sortDessertsByCategory() {
+    desserts.sort(sortCategory);
+    printDesserts();
+}
+
+sortCategoryIcon.addEventListener('click', sortDessertsByCategory);
+
 
 function sortRating (dessert1, dessert2) {
     return dessert1.rating - dessert2.rating;
 }
-desserts.sort(sortRating);
+
+function sortDessertsByRating () {
+    desserts.sort(sortRating);
+    printDesserts();
+}
+
+sortRatingIcon.addEventListener('click', sortDessertsByRating);
 
 
 
