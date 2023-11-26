@@ -19,6 +19,7 @@ Formulär för kunduppgifter:
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');  
 const cartHtmlContainer = document.querySelector('#orderSummary');
+const sortNameIcon = document.querySelector('#nameIcon');
 const today = new Date();
 
 const isFriday = today.getDay() === 6;
@@ -161,6 +162,49 @@ const desserts = [
 
 ];
 
+// sort by name, price, category and rating
+function sortName(dessert1, dessert2) {
+    if (dessert1.name > dessert2.name) {
+        return 1;
+     } else if (dessert1.name < dessert2.name) {
+        return -1;
+     } else {
+        return 0;
+     }
+}
+
+function sortDessertsByName() {
+    desserts.sort(sortName);
+    printDesserts();
+}
+
+sortNameIcon.addEventListener('click', sortDessertsByName);
+
+
+function sortPrice(dessert1, dessert2) {
+    return dessert1.price - dessert2.price;
+}
+desserts.sort(sortPrice);
+
+
+function sortCategory(dessert1, dessert2) {
+    if (dessert1.category > dessert2.category) {
+        return 1;
+    } else if (dessert1.category < dessert2.category) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+desserts.sort(sortCategory);
+
+function sortRating (dessert1, dessert2) {
+    return dessert1.rating - dessert2.rating;
+}
+desserts.sort(sortRating);
+
+
+
 //update total amound in header
 function updateTotalAmount() {
     headerSubtotal.innerHTML = '';
@@ -233,6 +277,7 @@ function printProductList() {
     });
 }
 
+
 function addButtonEventListeners() {
     const minusBtns = document.querySelectorAll('button.minus');
     const plusBtns = document.querySelectorAll('button.plus');
@@ -279,7 +324,7 @@ function printCartDesserts() {
         orderedDessertAmount += dessert.amount;
         if (dessert.amount > 0) {
             let dessertPrice = dessert.price;
-            if (dessert.amount >= 10) { //10% discount
+            if (dessert.amount >= 10) { //10% discount - add to calculateSum?
                 dessertPrice *= 0.9;
             }
             const adjustedDessertPrice = dessert.price * priceIncrease;
