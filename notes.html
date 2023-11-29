@@ -1,0 +1,51 @@
+<!-- payment options -->
+
+<label for="payment">Payment method</label><br>
+
+                    <label for="card">Card:</label>
+                    <input type="checkbox" id="card" name="card"><br>
+                    <div id="cardPayment" class="hidden">
+                        <label for="cardNo">Card Number:</label>
+                        <input type="number" id="cardno" name="cardno"><br>
+                        <label for="dateYear">Expiration (mm/yy):</label>
+                        <input type="number" id="dateYear" name="dateYear"><br>
+                        <label for="cvc">CVC number:</label>
+                        <input type="number" id="cvc" name="cvc"><br>
+                    </div>
+
+
+                    <label for="invoice">Invoice:</label>
+                    <input type="checkbox" id="invoice" name="invoice"><br>
+                    <div id="invoicePayment" class="hidden">
+                        <label for="idNo">Swedish ID number:</label>
+                        <input type="text" id="idNo" name="idNo"><br>
+                    </div>
+
+
+
+                    const cardChecked = document.querySelector('#card');
+                    const invoiceChecked = document.querySelector('#invoice');
+                    
+                    //tick checkbox to unhide card payment details fields
+                    cardChecked.addEventListener('click', unhideCardFields);
+                    
+                    function unhideCardFields() {
+                        let checkBox = document.getElementById('card');
+                        if (checkBox.checked === true) {
+                            document.getElementById('cardPayment').classList.remove('hidden');
+                        } else {
+                            document.getElementById('cardPayment').classList.add('hidden');
+                        }
+                    }
+                    
+                    //tick checkbox to unhide invoice fields
+                    invoiceChecked.addEventListener('click', unhideInvoiceFields);
+                    
+                    function unhideInvoiceFields() {
+                        let checkBox = document.getElementById('invoice');
+                        if (checkBox.checked === true) {
+                            document.getElementById('invoicePayment').classList.remove('hidden');
+                        } else {
+                            document.getElementById('invoicePayment').classList.add('hidden');
+                        }
+                    }

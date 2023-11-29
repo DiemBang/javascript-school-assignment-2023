@@ -1,21 +1,3 @@
-
-/*
-
-Headern med varukorgsymbol och totalt pris:
-Varukorgsymbolen ska uppdateras när man lägger till eller ta bort vara
-Totalt pris ska uppdateras när man lägger till eller ta bort vara
-
-Produktmenyn:
-Produkterna ska gå att sortera utifrån namn, pris, kategori och rating
-
-Varukorgsammanställning(order summary): 
-Minus- och plusknapparna ska göra samma sak som ovan
-Krysset: Ta bort varan när man klickar
-Rabattkod: Visa kodfält när man klickar
-
-Formulär för kunduppgifter:
-
-*/
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');  
 const cartHtmlContainer = document.querySelector('#orderSummary');
@@ -385,3 +367,46 @@ function printCartDesserts() {
 }
 
 printDesserts();
+
+//contact form
+
+const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
+
+cardInvoiceRadios.forEach(function(radioBtn){
+    radioBtn.addEventListener('change', switchPaymentMethod);
+});
+
+const invoiceOption = document.querySelector('#invoice');
+const cardOption = document.querySelector('#card');
+let selectedPaymentOption = 'invoice';
+
+
+/**
+ * Switches between invoice and card payment method. 
+ * Toggles their visibility. 
+ */
+function switchPaymentMethod(e) {
+    invoiceOption.classList.toggle('hidden');
+    cardOption.classList.toggle('hidden');
+    
+    selectedPaymentOption = e.target.value;
+}
+
+const personalId = document.querySelector('#personalID');
+personalId.addEventListener('change', activateOrderBtn);
+
+const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+
+function isPersonalIdNumberValid() {
+    return personalIdRegEx.exec(personalId.value);
+}
+
+const orderBtn = document.querySelector('#orderBtn');
+
+function activateOrderBtn() {
+    if (selectedPaymentOption === 'invoice' && isPersonalIdNumberValid()) {
+        orderBtn.removeAttribute('disabled');
+    } else if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
+        orderBtn.setAttribute('disabled', '');
+    }
+}
