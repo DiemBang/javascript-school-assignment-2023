@@ -371,15 +371,35 @@ printDesserts();
 //contact form
 
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
+const inputs = [
+    document.querySelector('#creditCardNumber'),
+    document.querySelector('#creditCardMonth'),
+    document.querySelector('#creditCardYear'),
+    document.querySelector('#creditCardCvc'), 
+    document.querySelector('#personalID'),
+];
+
+const invoiceOption = document.querySelector('#invoice');
+const cardOption = document.querySelector('#card');
+const orderBtn = document.querySelector('#orderBtn');
+
+//Default options
+let selectedPaymentOption = 'card';
+
+//REGEX
+const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+const creditCardNumbeRegEx = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/); //VISA or Mastercard
+
+//Add event listeners
+inputs.forEach(function(input) {
+    input.addEventListener('focusout', activateOrderBtn);
+    input.addEventListener('change', activateOrderBtn);
+
+});
 
 cardInvoiceRadios.forEach(function(radioBtn){
     radioBtn.addEventListener('change', switchPaymentMethod);
 });
-
-const invoiceOption = document.querySelector('#invoice');
-const cardOption = document.querySelector('#card');
-let selectedPaymentOption = 'invoice';
-
 
 /**
  * Switches between invoice and card payment method. 
@@ -392,21 +412,39 @@ function switchPaymentMethod(e) {
     selectedPaymentOption = e.target.value;
 }
 
-const personalId = document.querySelector('#personalID');
-personalId.addEventListener('change', activateOrderBtn);
-
-const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
-
 function isPersonalIdNumberValid() {
-    return personalIdRegEx.exec(personalId.value);
+    return personalIdRegEx.exec(personalID.value);
 }
 
-const orderBtn = document.querySelector('#orderBtn');
-
 function activateOrderBtn() {
-    if (selectedPaymentOption === 'invoice' && isPersonalIdNumberValid()) {
-        orderBtn.removeAttribute('disabled');
-    } else if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
-        orderBtn.setAttribute('disabled', '');
+    orderBtn.setAttribute('disabled', '');
+
+    if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
+        return;
     }
+
+    if (selectedPaymentOption === 'card') {
+        //check card number
+        if (creditCardNumbeRegEx.exec(creditCardNumber.value) === null) {
+            console.warn('Credit card number not valid.')
+            return;  
+        }
+        //TODO: check month, incl. "padstart" with 0
+        //check card year
+        let year = Number(creditCardYear.value); 
+        const today = new Date();
+        const shortYear = Number(String(today.getFullYear()).substring(2));
+      
+        if (year > shortYear + 2 || year < shortYear) {
+            console.warn('Credit card month not valid');
+            return;
+        }
+       
+        //check card CVC
+        if (creditCardCvc.value.length !== 3) {
+        console.warn('CVC not valid.');
+        return;
+         }
+    }
+    orderBtn.removeAttribute('disabled');
 }

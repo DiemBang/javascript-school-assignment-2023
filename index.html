@@ -70,36 +70,36 @@
                     <div class="payment-options">
                         <div class="selector">
                             <label>
-                                <input type="radio" name="payment-option" value="invoice" checked>
+                                <input type="radio" name="payment-option" value="invoice">
                                 <span>Invoice</span>
                             </label>
                             <label>
-                                <input type="radio" name="payment-option" value="card">
+                                <input type="radio" name="payment-option" value="card" checked>
                                 <span>Card</span>
                             </label>
                         </div>
 
-                        <div class="invoice" id="invoice">
+                        <div class="invoice hidden" id="invoice">
                             <label>
                                 <span>Personal ID number</span>
-                                <input type="text" name="personal-id" id="personalID">
+                                <input type="text" name="personal-id" id="personalID" value="19850505-1234">
                             </label>
                         </div>
-                        <div class="card hidden" id="card">
+                        <div class="card" id="card">
                             <label>
                                 <span>Card number</span>
-                                <input type="number"><br>
+                                <input type="number" id="creditCardNumber" value="5100080000000000"><br>
                             </label>
                             <label>
                                 <span>Expiry date</span>
                                 <span>
-                                    <input type="number" class="small" placeholder="MM">/<input type="number"
-                                        class="small" placeholder="YY"><br>
+                                    <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number"
+                                        class="small" placeholder="YY" id="creditCardYear"><br>
                                 </span>
                             </label>
                             <label>
                                 <span>CVC</span>
-                                <input type="number" placeholder="123">
+                                <input type="number" placeholder="123" id="creditCardCvc">
                             </label>
                         </div>
                         <button id="orderBtn" disabled>Place order</button><br>
