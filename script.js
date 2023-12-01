@@ -432,7 +432,7 @@ function activateOrderBtn() {
         //TODO: check month, incl. "padstart" with 0
         let month = Number(creditCardMonth.value);
 
-        if (month > 12 && month < 1) {
+        if (month > 12 || month < 1) {
             console.warn('Credit card month not valid');
             return; 
         } else if (month >= 1 && month <= 9) {
