@@ -6,10 +6,15 @@ const sortPriceIcon = document.querySelector('#priceIcon');
 const sortCategoryIcon = document.querySelector('#categoryIcon');
 const sortRatingIcon = document.querySelector('#starIcon');
 const today = new Date();
+const invoiceBtn = document.querySelector('#invoiceBtn');
+const invoiceError = document.querySelector('#invoiceError');
+
 
 const isFriday = today.getDay() === 6;
 const isMonday = today.getDay() === 1;
 const currentHour = today.getHours();
+
+const resetBtn = document.querySelector('#resetBtn');
 
 let slownessTimeout = setTimeout(tooSlowCustomerMessage, 1000 * 60 * 15);
 
@@ -302,6 +307,7 @@ function printDesserts() {
     printProductList();
     printCartDesserts();
     addButtonEventListeners();
+    addDisabled();
 
 }
 
@@ -465,6 +471,19 @@ function activateOrderBtn() {
     orderBtn.removeAttribute('disabled');
 }
 
-const resetBtn = document.querySelector('#resetBtn');
 
 resetBtn.addEventListener('click', clearCart);
+
+
+
+//add disabled to invoice radio button when ordering >800 kr
+function addDisabled() {
+    let sum = calculateSum();
+    if (sum > 800) {
+        invoiceBtn.disabled = true;
+        invoiceError.innerHTML = `<p>Invoice is not available when total amount is 800 kr or higher.</p>`;
+    } else {
+        invoiceBtn.disabled = false;
+    }
+}
+
