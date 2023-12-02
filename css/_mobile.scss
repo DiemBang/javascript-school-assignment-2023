@@ -10,6 +10,9 @@ header {
     color: green;
     position: fixed;
     top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -19,7 +22,7 @@ h1 {
 }
 
 .cartAndNumber {
-    display: inline-flex;
+    display: flex;
 }
 
 main {
@@ -41,7 +44,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    align-content: flex-start;
     gap: 8px;
     
 }

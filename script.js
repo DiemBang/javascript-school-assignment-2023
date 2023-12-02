@@ -209,7 +209,7 @@ sortRatingIcon.addEventListener('click', sortDessertsByRating);
 
 
 
-//update total amound in header
+//update total amount in header
 function updateTotalAmount() {
     headerSubtotal.innerHTML = '';
     let sum = calculateSum();
@@ -464,3 +464,7 @@ function activateOrderBtn() {
     }
     orderBtn.removeAttribute('disabled');
 }
+
+const resetBtn = document.querySelector('#resetBtn');
+
+resetBtn.addEventListener('click', clearCart);
