@@ -1,3 +1,4 @@
+const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');  
 const cartHtmlContainer = document.querySelector('#orderSummary');
@@ -212,6 +213,14 @@ function sortDessertsByRating () {
 
 sortRatingIcon.addEventListener('click', sortDessertsByRating);
 
+//update total quantity in header
+function updateTotalQuantity() {
+    headerQuantity.innerHTML = '';
+    let quantity = calculateTotalQuantity();
+    headerQuantity.innerHTML += `<span>${quantity}</span>`;
+}
+
+
 
 
 //update total amount in header
@@ -302,12 +311,13 @@ function addButtonEventListeners() {
 
 //add html based on desserts array
 function printDesserts() {
-    
+    updateTotalQuantity();
     updateTotalAmount();
     printProductList();
     printCartDesserts();
     addButtonEventListeners();
     addDisabled();
+    calculateTotalQuantity();
 
 }
 
@@ -320,6 +330,15 @@ function calculateSum() {
 
     });
     return sum;
+}
+
+function calculateTotalQuantity() {
+    let totalQuantity = 0;
+
+    desserts.forEach(function(dessert, index){
+        totalQuantity += (dessert.amount);
+    });
+    return totalQuantity;
 }
 
 function printCartDesserts() {
@@ -471,10 +490,7 @@ function activateOrderBtn() {
     orderBtn.removeAttribute('disabled');
 }
 
-
 resetBtn.addEventListener('click', clearCart);
-
-
 
 //add disabled to invoice radio button when ordering >800 kr
 function addDisabled() {

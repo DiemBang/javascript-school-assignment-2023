@@ -1,6 +1,6 @@
 body {
     font-family: 'Libre Franklin', sans-serif;
-    
+
 }
 
 header {
@@ -23,6 +23,22 @@ h1 {
 
 .cartAndNumber {
     display: flex;
+    flex-wrap: wrap;
+}
+
+.cartNumber {
+    font-size: 1em;
+    background: #bdedb3;
+    border-radius: 50%;
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    left: -8px;
+    top: -10px;
+    opacity: .9;
+    text-align: center;
+
+
 }
 
 main {
@@ -32,24 +48,26 @@ main {
 .page1 {
     width: 100vw;
     margin-top: 8em;
-    
-  
+
+
 }
 
 .sort-by-icons img {
     display: inline-block;
 }
 
-#productListing { //flex container
+#productListing {
+    //flex container
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     align-content: flex-start;
     gap: 8px;
-    
+
 }
 
-.product { //flex items
+.product {
+    //flex items
     width: 300px;
     border: 1px solid black;
     text-align: center;
@@ -63,7 +81,7 @@ main {
 .product img {
     width: auto;
     margin: auto;
-    
+
 }
 
 .product-in-cart {
@@ -74,7 +92,7 @@ main {
     max-width: 100px;
     height: auto;
     display: inline-block;
-} 
+}
 
 .hidden {
     display: none;
@@ -82,4 +100,4 @@ main {
 
 [role=alert] {
     color: red;
-  }
+}
