@@ -505,18 +505,13 @@ function addDisabled() {
     }
 }
 
-
-
-
 function printOrderConfirmation() {
     orderConfirmation.innerHTML = '';
 
-    let orderedDessertAmount = 0;
     let date = new Date();
 
     date.setDate(date.getDate() + 5);
     let deliveryDate = date.toLocaleDateString("en-SE");
-    console.log(deliveryDate);
 
     orderConfirmation.innerHTML += `
     <h2>Thank you for your order.</h2>
@@ -525,7 +520,6 @@ function printOrderConfirmation() {
 
     //order confirmation summary
     desserts.forEach(function (dessert, index) {
-        orderedDessertAmount += dessert.amount;
         if (dessert.amount > 0) {
             orderConfirmation.innerHTML += `
             <article class = "product-in-order-summary">
@@ -538,9 +532,19 @@ function printOrderConfirmation() {
     orderConfirmation.innerHTML += `
     <h2>Delivery date: ${deliveryDate}</h2>
     `;
-
 }
 
+//prevent default form behaviour
+orderBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+
+//when clicking on place order button, order confirmation summary pops up
+orderBtn.addEventListener('click', showOrderConfirmation);
+
+function showOrderConfirmation() {
+    const orderConfirmation = document.querySelector('#orderConfirmation').classList.remove('hidden');
+}
 
 
 
