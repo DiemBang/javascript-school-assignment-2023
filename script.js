@@ -515,7 +515,7 @@ function printOrderConfirmation() {
 
     orderConfirmation.innerHTML += `
     <h2>Thank you for your order.</h2>
-    <h2>Order details:</h2>
+    <h3>Order details:</h3>
     `;
 
     //order confirmation summary
@@ -530,7 +530,7 @@ function printOrderConfirmation() {
     });
 
     orderConfirmation.innerHTML += `
-    <h2>Delivery date: ${deliveryDate}</h2>
+    <h3>Delivery date: ${deliveryDate}</h3>
     `;
 }
 
