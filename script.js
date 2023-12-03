@@ -1,6 +1,6 @@
 const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
-const productHtmlContainer = document.querySelector('#productListing');  
+const productHtmlContainer = document.querySelector('#productListing');
 const cartHtmlContainer = document.querySelector('#orderSummary');
 const sortNameIcon = document.querySelector('#nameIcon');
 const sortPriceIcon = document.querySelector('#priceIcon');
@@ -9,6 +9,7 @@ const sortRatingIcon = document.querySelector('#starIcon');
 const today = new Date();
 const invoiceBtn = document.querySelector('#invoiceBtn');
 const invoiceError = document.querySelector('#invoiceError');
+const orderConfirmation = document.querySelector('#orderConfirmation');
 
 
 const isFriday = today.getDay() === 6;
@@ -142,7 +143,7 @@ const desserts = [
         price: 58,
         amount: 0,
         category: 'Ceremonial',
-        rating: 4, 
+        rating: 4,
         image: {
             src: '../assets/images/softserve.png',
             alt: 'Matcha soft serve icecream',
@@ -157,11 +158,11 @@ const desserts = [
 function sortName(dessert1, dessert2) {
     if (dessert1.name > dessert2.name) {
         return 1;
-     } else if (dessert1.name < dessert2.name) {
+    } else if (dessert1.name < dessert2.name) {
         return -1;
-     } else {
+    } else {
         return 0;
-     }
+    }
 }
 
 function sortDessertsByName() {
@@ -202,11 +203,11 @@ function sortDessertsByCategory() {
 sortCategoryIcon.addEventListener('click', sortDessertsByCategory);
 
 
-function sortRating (dessert1, dessert2) {
+function sortRating(dessert1, dessert2) {
     return dessert1.rating - dessert2.rating;
 }
 
-function sortDessertsByRating () {
+function sortDessertsByRating() {
     desserts.sort(sortRating);
     printDesserts();
 }
@@ -230,7 +231,7 @@ function updateTotalAmount() {
     headerSubtotal.innerHTML += `
     <span>${sum} kr</span>
     `;
-   
+
 }
 
 function tooSlowCustomerMessage() {
@@ -239,7 +240,7 @@ function tooSlowCustomerMessage() {
 }
 
 function clearCart() {
-    desserts.forEach(function(dessert) {
+    desserts.forEach(function (dessert) {
         dessert.amount = 0;
     });
     printDesserts();
@@ -250,7 +251,7 @@ function decreaseAmount(e) {
     if (desserts[index].amount <= 0) {
         desserts[index].amount = 0;
     } else {
-    desserts[index].amount -= 1
+        desserts[index].amount -= 1
     }
     printDesserts();
 }
@@ -265,7 +266,7 @@ function increaseAmount(e) {
 //friday & > 15.00 && monday & <= 3
 function getPriceMultiplier() {
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
-        return 1.15; 
+        return 1.15;
     } else {
         return 1;
     }
@@ -277,9 +278,9 @@ function printProductList() {
 
     let priceIncrease = getPriceMultiplier();
 
-    desserts.forEach(function(dessert, index) {
-        productHtmlContainer.innerHTML += 
-        `
+    desserts.forEach(function (dessert, index) {
+        productHtmlContainer.innerHTML +=
+            `
             <article class="product">
                 <div class="imgFrame">
                     <img src="${dessert.image.src}" alt="${dessert.image.alt}" width="${dessert.image.width}" height="${dessert.image.height}" loading="lazy">
@@ -300,11 +301,11 @@ function addButtonEventListeners() {
     const minusBtns = document.querySelectorAll('button.minus');
     const plusBtns = document.querySelectorAll('button.plus');
 
-    minusBtns.forEach(function(btn) {
+    minusBtns.forEach(function (btn) {
         btn.addEventListener('click', decreaseAmount);
     });
 
-    plusBtns.forEach(function(btn) {
+    plusBtns.forEach(function (btn) {
         btn.addEventListener('click', increaseAmount);
     });
 }
@@ -318,6 +319,7 @@ function printDesserts() {
     addButtonEventListeners();
     addDisabled();
     calculateTotalQuantity();
+    printOrderConfirmation();
 
 }
 
@@ -325,7 +327,7 @@ function calculateSum() {
     let sum = 0;
     let priceIncrease = getPriceMultiplier();
 
-    desserts.forEach(function(dessert) {
+    desserts.forEach(function (dessert) {
         sum += Math.round((dessert.amount * dessert.price) * priceIncrease);
 
     });
@@ -335,7 +337,7 @@ function calculateSum() {
 function calculateTotalQuantity() {
     let totalQuantity = 0;
 
-    desserts.forEach(function(dessert, index){
+    desserts.forEach(function (dessert, index) {
         totalQuantity += (dessert.amount);
     });
     return totalQuantity;
@@ -347,9 +349,9 @@ function printCartDesserts() {
     let orderedDessertAmount = 0;
     let msg = '';
     let priceIncrease = getPriceMultiplier();
- 
+
     //cart
-    desserts.forEach(function(dessert, index) {
+    desserts.forEach(function (dessert, index) {
         orderedDessertAmount += dessert.amount;
         if (dessert.amount > 0) {
             let dessertPrice = dessert.price;
@@ -376,7 +378,7 @@ function printCartDesserts() {
         return;
     }
 
-    if (today.getDay() === 1){
+    if (today.getDay() === 1) {
         sum *= 0.9;
         msg += '<p>Monday discount: 10% off on your order';
     }
@@ -400,7 +402,7 @@ const inputs = [
     document.querySelector('#creditCardNumber'),
     document.querySelector('#creditCardMonth'),
     document.querySelector('#creditCardYear'),
-    document.querySelector('#creditCardCvc'), 
+    document.querySelector('#creditCardCvc'),
     document.querySelector('#personalID'),
 ];
 
@@ -416,13 +418,13 @@ const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8
 const creditCardNumbeRegEx = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/); //VISA or Mastercard
 
 //Add event listeners
-inputs.forEach(function(input) {
+inputs.forEach(function (input) {
     input.addEventListener('focusout', activateOrderBtn);
     input.addEventListener('change', activateOrderBtn);
 
 });
 
-cardInvoiceRadios.forEach(function(radioBtn){
+cardInvoiceRadios.forEach(function (radioBtn) {
     radioBtn.addEventListener('change', switchPaymentMethod);
 });
 
@@ -433,7 +435,7 @@ cardInvoiceRadios.forEach(function(radioBtn){
 function switchPaymentMethod(e) {
     invoiceOption.classList.toggle('hidden');
     cardOption.classList.toggle('hidden');
-    
+
     selectedPaymentOption = e.target.value;
 }
 
@@ -452,14 +454,14 @@ function activateOrderBtn() {
         //check card number
         if (creditCardNumbeRegEx.exec(creditCardNumber.value) === null) {
             console.warn('Credit card number not valid.')
-            return;  
+            return;
         }
         //TODO: check month, incl. "padstart" with 0
         let month = Number(creditCardMonth.value);
 
         if (month > 12 || month < 1) {
             console.warn('Credit card month not valid');
-            return; 
+            return;
         } else if (month >= 1 && month <= 9) {
             if (creditCardMonth.value[0] != 0) {
                 console.warn('Credit card month not valid');
@@ -467,25 +469,25 @@ function activateOrderBtn() {
             }
         }
         console.log(month);
-        console.log(typeof(month));
+        console.log(typeof (month));
 
         //check card year
-        let year = Number(creditCardYear.value); 
+        let year = Number(creditCardYear.value);
         const today = new Date();
         const shortYear = Number(String(today.getFullYear()).substring(2));
-      
+
         if (year > shortYear + 2 || year < shortYear) {
             console.warn('Credit card year not valid');
             return;
         }
-       
+
         //check month + year?
 
         //check card CVC
         if (creditCardCvc.value.length !== 3) {
-        console.warn('CVC not valid.');
-        return;
-         }
+            console.warn('CVC not valid.');
+            return;
+        }
     }
     orderBtn.removeAttribute('disabled');
 }
@@ -502,4 +504,43 @@ function addDisabled() {
         invoiceBtn.disabled = false;
     }
 }
+
+
+
+
+function printOrderConfirmation() {
+    orderConfirmation.innerHTML = '';
+
+    let orderedDessertAmount = 0;
+    let date = new Date();
+
+    date.setDate(date.getDate() + 5);
+    let deliveryDate = date.toLocaleDateString("en-SE");
+    console.log(deliveryDate);
+
+    orderConfirmation.innerHTML += `
+    <h2>Thank you for your order.</h2>
+    <h2>Order details:</h2>
+    `;
+
+    //order confirmation summary
+    desserts.forEach(function (dessert, index) {
+        orderedDessertAmount += dessert.amount;
+        if (dessert.amount > 0) {
+            orderConfirmation.innerHTML += `
+            <article class = "product-in-order-summary">
+                <span>${dessert.name}</span> | <span>Quantity: ${dessert.amount}</span>
+            </article>
+            `;
+        };
+    });
+
+    orderConfirmation.innerHTML += `
+    <h2>Delivery date: ${deliveryDate}</h2>
+    `;
+
+}
+
+
+
 
