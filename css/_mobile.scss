@@ -1,6 +1,5 @@
 body {
     font-family: 'Libre Franklin', sans-serif;
-
 }
 
 header {
@@ -38,19 +37,18 @@ h1 {
     top: -10px;
     opacity: .9;
     text-align: center;
-
-
 }
 
 main {
     margin: 1em;
 }
 
+h2 {
+    font-size: 1.3em;
+}
 .page1 {
     width: 100vw;
     margin-top: 8em;
-
-
 }
 
 .sort-by-icons img {
@@ -64,7 +62,6 @@ main {
     align-items: center;
     align-content: flex-start;
     gap: 8px;
-
 }
 
 .product {
@@ -82,7 +79,11 @@ main {
 .product img {
     width: auto;
     margin: auto;
+}
 
+button {
+    font-size: 1.2em;
+    width: 60px;
 }
 
 .product-in-cart {
@@ -101,4 +102,16 @@ main {
 
 [role=alert] {
     color: red;
+}
+
+#orderConfirmation {
+    background-color: white;
+    text-align: center;
+    padding-top: 25%;
+    margin: auto;
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    bottom: 25%;
+    right: 10%;
 }

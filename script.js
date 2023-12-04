@@ -11,11 +11,6 @@ const invoiceBtn = document.querySelector('#invoiceBtn');
 const invoiceError = document.querySelector('#invoiceError');
 const orderConfirmation = document.querySelector('#orderConfirmation');
 
-
-const isFriday = today.getDay() === 6;
-const isMonday = today.getDay() === 1;
-const currentHour = today.getHours();
-
 const resetBtn = document.querySelector('#resetBtn');
 
 let slownessTimeout = setTimeout(tooSlowCustomerMessage, 1000 * 60 * 15);
@@ -222,8 +217,6 @@ function updateTotalQuantity() {
 }
 
 
-
-
 //update total amount in header
 function updateTotalAmount() {
     headerSubtotal.innerHTML = '';
@@ -231,7 +224,6 @@ function updateTotalAmount() {
     headerSubtotal.innerHTML += `
     <span>${sum} kr</span>
     `;
-
 }
 
 function tooSlowCustomerMessage() {
@@ -265,6 +257,10 @@ function increaseAmount(e) {
 
 //friday & > 15.00 && monday & <= 3
 function getPriceMultiplier() {
+    const isFriday = today.getDay() === 6;
+    const isMonday = today.getDay() === 1;
+    const currentHour = today.getHours();
+
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
         return 1.15;
     } else {
@@ -320,7 +316,6 @@ function printDesserts() {
     addDisabled();
     calculateTotalQuantity();
     printOrderConfirmation();
-
 }
 
 function calculateSum() {
@@ -532,10 +527,21 @@ function printOrderConfirmation() {
     orderConfirmation.innerHTML += `
     <h3>Delivery date: ${deliveryDate}</h3>
     `;
+    orderConfirmation.innerHTML += `
+    <button id="closeBtn">Close</button>
+    `;
+
+    //when clicking on close button, order confirmation popup goes away
+    closeBtn.addEventListener('click', closeOrderConfirmation);
+
+}
+
+function closeOrderConfirmation() {
+    const orderConfirmation = document.querySelector('#orderConfirmation').classList.add('hidden');
 }
 
 //prevent default form behaviour
-orderBtn.addEventListener('click', function(e) {
+orderBtn.addEventListener('click', function (e) {
     e.preventDefault();
 });
 
@@ -545,6 +551,7 @@ orderBtn.addEventListener('click', showOrderConfirmation);
 function showOrderConfirmation() {
     const orderConfirmation = document.querySelector('#orderConfirmation').classList.remove('hidden');
 }
+
 
 
 
