@@ -31,18 +31,18 @@
     <main>
         <div class="page1">
             <h2>Sweet dreams are made of matcha</h2>
-            <p>Sort by:</p>
-            <div class="sort-by-icons">
-                <img id="starIcon" src="../assets/icons/star-solid.svg" alt="sort by rating icon" width="30"
-                    height="30">
-                <img id="nameIcon" src="../assets/icons/arrow-down-a-z-solid.svg" alt="sort by name icon" width="30"
-                    height="30">
-                <img id="priceIcon" src="../assets/icons/arrow-down-1-9-solid.svg" alt="sort by price icon" width="30"
-                    height="30">
-                <img id="categoryIcon" src="../assets/icons/sort-solid.svg" alt="sort by category icon" width="30"
-                    height="30">
-            </div>
-            <div id="productListing">
+            <br>
+            <label>
+                Sort by: 
+                <select name="sortBy" id="sortBy">
+                  <option value="name">Name</option>
+                  <option value="price">Price</option>
+                  <option value="category">Category</option>
+                  <option value="rating">Rating</option>
+                </select>
+                <br>
+            </label>
+            <div class="productListing" id="productListing">
 
             </div>
         </div>

@@ -2,10 +2,6 @@ const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');
 const cartHtmlContainer = document.querySelector('#orderSummary');
-const sortNameIcon = document.querySelector('#nameIcon');
-const sortPriceIcon = document.querySelector('#priceIcon');
-const sortCategoryIcon = document.querySelector('#categoryIcon');
-const sortRatingIcon = document.querySelector('#starIcon');
 const today = new Date();
 const invoiceBtn = document.querySelector('#invoiceBtn');
 const invoiceError = document.querySelector('#invoiceError');
@@ -149,6 +145,23 @@ const desserts = [
 
 ];
 
+const selectElement = document.querySelector('#sortBy');
+
+selectElement.addEventListener('change', sortBySelected);
+
+function sortBySelected(event) {
+    console.log(event.target.value);
+    if (event.target.value === "name") {
+        sortDessertsByName();
+    } else if (event.target.value === "price") {
+        sortDessertsByPrice();
+    } else if (event.target.value === "category") {
+        sortDessertsByCategory();
+    } else if (event.target.value === "rating") {
+        sortDessertsByRating();
+    }
+}
+
 // sort by name, price, category and rating
 function sortName(dessert1, dessert2) {
     if (dessert1.name > dessert2.name) {
@@ -165,9 +178,6 @@ function sortDessertsByName() {
     printDesserts();
 }
 
-sortNameIcon.addEventListener('click', sortDessertsByName);
-
-
 function sortPrice(dessert1, dessert2) {
     return dessert1.price - dessert2.price;
 }
@@ -176,9 +186,6 @@ function sortDessertsByPrice() {
     desserts.sort(sortPrice);
     printDesserts();
 }
-
-sortPriceIcon.addEventListener('click', sortDessertsByPrice);
-
 
 function sortCategory(dessert1, dessert2) {
     if (dessert1.category > dessert2.category) {
@@ -195,8 +202,6 @@ function sortDessertsByCategory() {
     printDesserts();
 }
 
-sortCategoryIcon.addEventListener('click', sortDessertsByCategory);
-
 
 function sortRating(dessert1, dessert2) {
     return dessert1.rating - dessert2.rating;
@@ -206,8 +211,6 @@ function sortDessertsByRating() {
     desserts.sort(sortRating);
     printDesserts();
 }
-
-sortRatingIcon.addEventListener('click', sortDessertsByRating);
 
 //update total quantity in header
 function updateTotalQuantity() {
