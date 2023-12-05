@@ -204,7 +204,7 @@ function sortDessertsByCategory() {
 
 
 function sortRating(dessert1, dessert2) {
-    return dessert1.rating - dessert2.rating;
+    return dessert2.rating - dessert1.rating;
 }
 
 function sortDessertsByRating() {
