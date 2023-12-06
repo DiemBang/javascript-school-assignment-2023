@@ -35,7 +35,7 @@
             <label>
                 Sort by: 
                 <select name="sortBy" id="sortBy">
-                  <option value="name">Name A-Z</option>
+                  <option value="name">Name (A-Z)</option>
                   <option value="price">Lowest price</option>
                   <option value="category">Category</option>
                   <option value="rating">Highest rating</option>
@@ -58,16 +58,22 @@
                 <form>
                     <label for="fname">First name</label>
                     <input type="text" id="fname" name="fname"><br>
+                    <div role="alert" id="fnameError"></div>
                     <label for="lname">Last name</label>
                     <input type="text" id="lname" name="lname"><br>
+                    <div role="alert" id="lnameError"></div>
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address"><br>
+                    <div role="alert" id="addressError"></div>
                     <label for="postcode">Postcode</label>
                     <input type="text" id="postcode" name="postcode"><br>
+                    <div role="alert" id="postcodeError"></div>
                     <label for="phone">Phone number</label>
                     <input type="text" id="phone" name="phone"><br>
+                    <div role="alert" id="phoneError"></div>
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email"><br>
+                    <div role="alert" id="emailError"></div>
                     <p>Payment method</p>
                     <div class="payment-options">
                         <div class="selector">

@@ -2,9 +2,22 @@ const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');
 const cartHtmlContainer = document.querySelector('#orderSummary');
+const fnameError = document.querySelector('#fnameError');
+const lnameError = document.querySelector('#lnameError');
+const addressError = document.querySelector('#addressError');
+const postcodeError = document.querySelector('#postcodeError');
+const phoneError = document.querySelector('#phoneError');
+const emailError = document.querySelector('#emailError');
 const today = new Date();
 const invoiceBtn = document.querySelector('#invoiceBtn');
 const invoiceError = document.querySelector('#invoiceError');
+const fname = document.querySelector('#fname');
+const lname = document.querySelector('#lname');
+const address = document.querySelector('#address');
+const postcode = document.querySelector('#postcode');
+const phone = document.querySelector('#phone');
+const email = document.querySelector('#email');
+const personalID = document.querySelector('#personalID');
 const orderConfirmation = document.querySelector('#orderConfirmation');
 
 const resetBtn = document.querySelector('#resetBtn');
@@ -402,6 +415,7 @@ const inputs = [
     document.querySelector('#creditCardYear'),
     document.querySelector('#creditCardCvc'),
     document.querySelector('#personalID'),
+    document.querySelector('#fname'),
 ];
 
 const invoiceOption = document.querySelector('#invoice');
@@ -414,6 +428,21 @@ let selectedPaymentOption = 'card';
 //REGEX
 const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
 const creditCardNumbeRegEx = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/); //VISA or Mastercard
+const nameRegEx = new RegExp(/^[a-zA-ZåäöÅÄÖ]+([\ a-zA-ZåäöÅÄÖ])*/);
+//const addressRegEx = new RegExp
+//const postcodeRegEx =
+const phoneRegEx = new RegExp(/^((((0{2}?)|(\+){1})46)|0)7[\d]{8}/);
+const emailRegEx = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/);
+
+
+//validation
+function isFnameValid() {
+    return nameRegEx.test(fname.value);
+}
+
+function isPersonalIdNumberValid() {
+    return personalIdRegEx.exec(personalID.value);
+}
 
 //Add event listeners
 inputs.forEach(function (input) {
@@ -437,12 +466,19 @@ function switchPaymentMethod(e) {
     selectedPaymentOption = e.target.value;
 }
 
-function isPersonalIdNumberValid() {
-    return personalIdRegEx.exec(personalID.value);
-}
 
 function activateOrderBtn() {
+    console.log("activateOrderBtn");
     orderBtn.setAttribute('disabled', '');
+
+    if (!isFnameValid()) {
+        console.log("first name is not valid");
+        fnameError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        console.log("first name is valid");
+        fnameError.innerHTML = ``;
+    }
 
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
         return;
@@ -454,7 +490,7 @@ function activateOrderBtn() {
             console.warn('Credit card number not valid.')
             return;
         }
-        //TODO: check month, incl. "padstart" with 0
+        //check month
         let month = Number(creditCardMonth.value);
 
         if (month > 12 || month < 1) {
@@ -479,8 +515,6 @@ function activateOrderBtn() {
             return;
         }
 
-        //check month + year?
-
         //check card CVC
         if (creditCardCvc.value.length !== 3) {
             console.warn('CVC not valid.');
@@ -500,6 +534,8 @@ function addDisabled() {
         invoiceError.innerHTML = `<p>Invoice is not available when total amount is 800 kr or higher.</p>`;
     } else {
         invoiceBtn.disabled = false;
+        invoiceError.innerHTML = ``;
+
     }
 }
 
