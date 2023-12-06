@@ -23,22 +23,30 @@
             <div class="cart"></div>
             <img id="cartIcon" src="../assets/icons/cart-shopping-solid.svg" alt="shopping cart icon" width="30"
                 height="30">
-                <div class="cartNumber" id="cartNumber"></div>
-            </div>
-            <div id="totalAmount"></div>
+            <div class="cartNumber" id="cartNumber"></div>
+        </div>
+        <div id="totalAmount"></div>
         </div>
     </header>
     <main>
-        <div class="page1">
+        <div class="intro">
             <h2>Sweet dreams are made of matcha</h2>
-            <br>
+            <p>Welcome to Matcha Munchies, your haven for matcha-infused indulgence! Immerse yourself in the enchanting
+                world of matcha with our curated selection of delightful treats, from luscious matcha tiramisu to
+                delicately crafted matcha mochi. At Matcha Munchies, each dessert is a harmonious blend of the finest
+                green tea flavors, promising a sweet escape that transcends the ordinary. Whether you're a matcha
+                connoisseur or a newcomer to this exquisite taste, join us in savoring the perfect balance of earthy
+                richness and sweetness in every bite. Elevate your dessert experience and treat yourself to a moment of
+                matcha magic.</p>
+        </div>
+        <div class="page1">
             <label>
-                Sort by: 
+                Sort by:
                 <select name="sortBy" id="sortBy">
-                  <option value="name">Name (A-Z)</option>
-                  <option value="price">Lowest price</option>
-                  <option value="category">Category</option>
-                  <option value="rating">Highest rating</option>
+                    <option value="name">Name (A-Z)</option>
+                    <option value="price">Lowest price</option>
+                    <option value="category">Grade/Category</option>
+                    <option value="rating">Highest rating</option>
                 </select>
                 <br>
             </label>
@@ -102,8 +110,8 @@
                             <label>
                                 <span>Expiry date</span>
                                 <span>
-                                    <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number"
-                                        class="small" placeholder="YY" id="creditCardYear"><br>
+                                    <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input
+                                        type="number" class="small" placeholder="YY" id="creditCardYear"><br>
                                 </span>
                             </label>
                             <label>
@@ -127,11 +135,11 @@
         </div>
         </div>
         <div class="hidden" id="orderConfirmation">
-            
+
         </div>
         </div>
     </main>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.mjs"></script>
 </body>
 
 </html>

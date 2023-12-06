@@ -1,3 +1,5 @@
+import desserts from "./desserts.mjs";
+
 const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
 const productHtmlContainer = document.querySelector('#productListing');
@@ -23,140 +25,6 @@ const orderConfirmation = document.querySelector('#orderConfirmation');
 const resetBtn = document.querySelector('#resetBtn');
 
 let slownessTimeout = setTimeout(tooSlowCustomerMessage, 1000 * 60 * 15);
-
-const desserts = [
-    {
-        name: 'Brownie',
-        price: 42,
-        amount: 0,
-        category: 'Culinary', //ceremonial, premium or culinary
-        rating: 4, //scale 1-5
-        image: {
-            src: '../assets/images/brownies.png',
-            alt: 'Matcha brownies with chocolate chip',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Cheesecake',
-        price: 48,
-        amount: 0,
-        category: 'Premium',
-        rating: 4,
-        image: {
-            src: '../assets/images/cheesecake.png',
-            alt: 'Matcha cheesecake',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Cookie with white chocolate',
-        price: 38,
-        amount: 0,
-        category: 'Culinary',
-        rating: 3,
-        image: {
-            src: '../assets/images/cookie.png',
-            alt: 'Matcha cookie with white chocolate chip',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Donut',
-        price: 38,
-        amount: 0,
-        category: 'Culinary',
-        rating: 3,
-        image: {
-            src: '../assets/images/donuts.png',
-            alt: 'Matcha donuts',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Lava cake',
-        price: 48,
-        amount: 0,
-        category: 'Premium',
-        rating: 4,
-        image: {
-            src: '../assets/images/lavacake.png',
-            alt: 'Gooey lava cake with matcha filling',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Macaroons',
-        price: 48,
-        amount: 0,
-        category: 'Premium',
-        rating: 4,
-        image: {
-            src: '../assets/images/macaroons.png',
-            alt: 'Matcha macaroons',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Mille crepe cake',
-        price: 52,
-        amount: 0,
-        category: 'Ceremonial',
-        rating: 5,
-        image: {
-            src: '../assets/images/millefeuille.png',
-            alt: 'Matcha mille feuille cake',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Mochie',
-        price: 42,
-        amount: 0,
-        category: 'Premium',
-        rating: 2,
-        image: {
-            src: '../assets/images/mochie.png',
-            alt: 'Matcha mochie',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Souffle pancakes',
-        price: 82,
-        amount: 0,
-        category: 'Ceremonial',
-        rating: 5,
-        image: {
-            src: '../assets/images/pancakes.png',
-            alt: 'Fluffy matcha souffle pancakes',
-            width: '100',
-            height: '200',
-        }
-    },
-    {
-        name: 'Soft serve',
-        price: 58,
-        amount: 0,
-        category: 'Ceremonial',
-        rating: 4,
-        image: {
-            src: '../assets/images/softserve.png',
-            alt: 'Matcha soft serve icecream',
-            width: '100',
-            height: '200',
-        }
-    }
-
-];
 
 const selectElement = document.querySelector('#sortBy');
 
@@ -497,42 +365,42 @@ function activateOrderBtn() {
     orderBtn.setAttribute('disabled', '');
 
     if (!isFnameValid()) {
-        fnameError.innerHTML = `<p>Not valid.</p>`;
+        fnameError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         fnameError.innerHTML = ``;
     }
 
     if (!isLnameValid()) {
-        lnameError.innerHTML = `<p>Not valid.</p>`;
+        lnameError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         lnameError.innerHTML = ``;
     }
 
     if (!isAddressValid()) {
-        addressError.innerHTML = `<p>Not valid.</p>`;
+        addressError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         addressError.innerHTML = ``;
     }
 
     if (!isPostcodeValid()) {
-        postcodeError.innerHTML = `<p>Not valid.</p>`;
+        postcodeError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         postcodeError.innerHTML = ``;
     }
 
     if (!isPhoneValid()) {
-        phoneError.innerHTML = `<p>Not valid.</p>`;
+        phoneError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         phoneError.innerHTML = ``;
     }
 
     if (!isEmailValid()) {
-        emailError.innerHTML = `<p>Not valid.</p>`;
+        emailError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     } else {
         emailError.innerHTML = ``;

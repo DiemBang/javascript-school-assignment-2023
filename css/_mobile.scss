@@ -43,13 +43,17 @@ main {
     margin: 1em;
 }
 
+.intro {
+    margin-top: 6em;
+    margin-bottom: 1em;
+}
+
 h2 {
     font-size: 1.3em;
 }
 
 .page1 {
     width: 100vw;
-    margin-top: 8em;
 }
 
 .sort-by-icons img {
@@ -77,9 +81,11 @@ h2 {
     //flex items
     width: 300px;
     border: 1px solid black;
+    box-shadow: 5px 10px #bdedb3;
     border-radius: 15px;
     text-align: center;
     padding: 1em;
+    margin: 0.5em;
 }
 
 .imgFrame {
@@ -112,7 +118,7 @@ h2 {
 
 #orderConfirmation {
     align-items: center;
-    background-color: #c3efba;
+    background-color: #bdedb3;
     text-align: center;
     margin: auto;
     position: fixed;
