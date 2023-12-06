@@ -416,6 +416,11 @@ const inputs = [
     document.querySelector('#creditCardCvc'),
     document.querySelector('#personalID'),
     document.querySelector('#fname'),
+    document.querySelector('#lname'),
+    document.querySelector('#address'),
+    document.querySelector('#postcode'),
+    document.querySelector('#phone'),
+    document.querySelector('#email'),
 ];
 
 const invoiceOption = document.querySelector('#invoice');
@@ -429,15 +434,35 @@ let selectedPaymentOption = 'card';
 const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
 const creditCardNumbeRegEx = new RegExp(/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/); //VISA or Mastercard
 const nameRegEx = new RegExp(/^[a-zA-ZåäöÅÄÖ]+([\ a-zA-ZåäöÅÄÖ])*/);
-//const addressRegEx = new RegExp
-//const postcodeRegEx =
-const phoneRegEx = new RegExp(/^((((0{2}?)|(\+){1})46)|0)7[\d]{8}/);
+const addressRegEx = new RegExp(/^[a-zA-ZåäöÅÄÖ0-9\s,'-]+$/);
+const postcodeRegEx = new RegExp(/^(SE)?\d{5}$/);
+const phoneRegEx = new RegExp(/^(\+46|0046|0)[\s\-]?[1-9]\d{0,3}[\s\-]?\d{4}[\s\-]?\d{2}$/);
 const emailRegEx = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/);
-
 
 //validation
 function isFnameValid() {
-    return nameRegEx.test(fname.value);
+    return nameRegEx.exec(fname.value);
+}
+
+function isLnameValid() {
+    return nameRegEx.exec(lname.value);
+}
+
+function isAddressValid() {
+    return addressRegEx.exec(address.value);
+}
+
+function isPostcodeValid() {
+    return postcodeRegEx.exec(postcode.value);
+}
+
+function isPhoneValid() {
+    return phoneRegEx.exec(phone.value);
+}
+
+function isEmailValid() {
+    console.log("checking email");
+    return emailRegEx.exec(email.value);
 }
 
 function isPersonalIdNumberValid() {
@@ -472,12 +497,45 @@ function activateOrderBtn() {
     orderBtn.setAttribute('disabled', '');
 
     if (!isFnameValid()) {
-        console.log("first name is not valid");
         fnameError.innerHTML = `<p>Not valid.</p>`;
         return;
     } else {
-        console.log("first name is valid");
         fnameError.innerHTML = ``;
+    }
+
+    if (!isLnameValid()) {
+        lnameError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        lnameError.innerHTML = ``;
+    }
+
+    if (!isAddressValid()) {
+        addressError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        addressError.innerHTML = ``;
+    }
+
+    if (!isPostcodeValid()) {
+        postcodeError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        postcodeError.innerHTML = ``;
+    }
+
+    if (!isPhoneValid()) {
+        phoneError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        phoneError.innerHTML = ``;
+    }
+
+    if (!isEmailValid()) {
+        emailError.innerHTML = `<p>Not valid.</p>`;
+        return;
+    } else {
+        emailError.innerHTML = ``;
     }
 
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
