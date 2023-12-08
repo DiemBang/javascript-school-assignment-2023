@@ -14,6 +14,7 @@ const emailError = document.querySelector('#emailError');
 const today = new Date();
 const invoiceBtn = document.querySelector('#invoiceBtn');
 const invoiceError = document.querySelector('#invoiceError');
+const personalIdError = document.querySelector('#personalIdError');
 const fname = document.querySelector('#fname');
 const lname = document.querySelector('#lname');
 const address = document.querySelector('#address');
@@ -419,6 +420,7 @@ function activateOrderBtn() {
     }
 
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
+        personalIdError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
     }
 
@@ -473,7 +475,6 @@ function addDisabled() {
     } else {
         invoiceBtn.disabled = false;
         invoiceError.innerHTML = ``;
-
     }
 }
 

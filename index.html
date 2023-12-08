@@ -25,7 +25,8 @@
                 height="30">
             <div class="cartNumber" id="cartNumber"></div>
         </div>
-        <div id="totalAmount"></div>
+        <div id="totalAmount">
+
         </div>
     </header>
     <main>
@@ -90,7 +91,7 @@
                             <label>
                                 <input type="radio" name="payment-option" value="invoice" id="invoiceBtn">
                                 <span>Invoice</span>
-                                <div role="alert" id="invoiceError"></div>
+                                <span role="alert" id="invoiceError"></span>
                             </label>
                             <label>
                                 <input type="radio" name="payment-option" value="card" checked>
@@ -102,6 +103,7 @@
                             <label>
                                 <span>Personal ID number</span>
                                 <input type="text" name="personal-id" id="personalID" value="19850505-1234">
+                                <div role="alert" id="personalIdError"></div>
                             </label>
                         </div>
                         <div class="card" id="card">
@@ -111,10 +113,11 @@
                             </label>
                             <label>
                                 <span>Expiry date</span>
-                                <span>
-                                    <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input
-                                        type="number" class="small" placeholder="YY" id="creditCardYear"><br>
-                                </span>
+                                <input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                            </label>        
+                                /
+                            <label>
+                                <input type="number" class="small" placeholder="YY" id="creditCardYear"><br>                                
                             </label>
                             <label>
                                 <span>CVC</span>
@@ -130,15 +133,12 @@
                     <label for="agreeTo">I agree to the Terms and Conditions</label>
                     <input type="checkbox" id="agreeTo" name="agreeTo"><br>
                     <label for="subscribe">Subscribe to newsletter</label>
-                    <input type="checkbox" checked="checked" name="subscribe"><br>
+                    <input type="checkbox" id="subscribe" checked="checked" name="subscribe"><br>
                     <button type="reset" id="resetBtn">Clear form</button>
                 </form>
             </div>
         </div>
-        </div>
         <div class="hidden" id="orderConfirmation">
-
-        </div>
         </div>
     </main>
     <script type="module" src="script.mjs"></script>
