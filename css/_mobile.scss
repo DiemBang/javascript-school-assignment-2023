@@ -17,6 +17,8 @@ header {
 h1 {
     display: inline-flex;
     font-size: 1.5em;
+    text-transform: lowercase;
+    text-align: center;
     margin: 1em;
     margin-bottom: 0;
 }
@@ -24,6 +26,10 @@ h1 {
 .cartAndNumber {
     display: flex;
     flex-wrap: wrap;
+
+    &.shake {
+        animation: shakeCart .4s ease-in-out forwards;
+      }
 }
 
 .cartNumber {
@@ -46,6 +52,10 @@ main {
 .intro {
     margin-top: 6em;
     margin-bottom: 1em;
+
+    h2 {
+        
+    }
 }
 
 h2 {
@@ -129,3 +139,18 @@ h2 {
         width: 4em;
     }
 }
+
+@keyframes shakeCart {
+    25% {
+      transform:translateX(6px)
+    }
+    50% {
+      transform:translateX(-4px);
+    }
+    75% {
+      transform:translateX(2px);
+    }
+    100% {
+      transform:translateX(0);
+    }
+  }

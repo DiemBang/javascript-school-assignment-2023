@@ -2,6 +2,7 @@ import desserts from "./desserts.mjs";
 
 const headerQuantity = document.querySelector('#cartNumber');
 const headerSubtotal = document.querySelector('#totalAmount');
+const cartIcon = document.querySelector('#cartAndNumber');
 const productHtmlContainer = document.querySelector('#productListing');
 const cartHtmlContainer = document.querySelector('#orderSummary');
 const fnameError = document.querySelector('#fnameError');
@@ -120,6 +121,7 @@ function clearCart() {
         dessert.amount = 0;
     });
     printDesserts();
+    shakeCart();
 }
 
 function decreaseAmount(e) {
@@ -130,14 +132,23 @@ function decreaseAmount(e) {
         desserts[index].amount -= 1
     }
     printDesserts();
+    shakeCart();
 }
 
 function increaseAmount(e) {
     const index = e.currentTarget.dataset.id;
     desserts[index].amount += 1
     printDesserts();
+    shakeCart();
 }
 
+//shake cart animation
+function shakeCart() {
+    cartAndNumber.classList.add('shake');
+    setTimeout(function(){
+        cartAndNumber.classList.remove('shake');
+    },500);
+}
 
 //friday & > 15.00 && monday & <= 3
 function getPriceMultiplier() {
@@ -200,6 +211,7 @@ function printDesserts() {
     addDisabled();
     calculateTotalQuantity();
     printOrderConfirmation();
+    
 }
 
 function calculateSum() {
