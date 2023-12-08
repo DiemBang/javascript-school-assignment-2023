@@ -422,6 +422,8 @@ function activateOrderBtn() {
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
         personalIdError.innerHTML = `<p>Field cannot be empty/Not valid.</p>`;
         return;
+    } else {
+        personalIdError.innerHTML = ``;
     }
 
     if (selectedPaymentOption === 'card') {

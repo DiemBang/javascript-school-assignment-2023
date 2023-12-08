@@ -30,7 +30,7 @@ h1 {
 
     &.shake {
         animation: shakeCart .4s ease-in-out forwards;
-      }
+    }
 }
 
 .cartNumber {
@@ -54,9 +54,7 @@ main {
     margin-top: 6em;
     margin-bottom: 1em;
 
-    h2 {
-        
-    }
+    h2 {}
 }
 
 h2 {
@@ -109,6 +107,10 @@ h2 {
     margin: auto;
 }
 
+.page2 {
+    width: 100vw;
+}
+
 .product-in-cart {
     display: inline-block;
 }
@@ -118,6 +120,19 @@ h2 {
     height: auto;
     display: inline-block;
 }
+
+.page3 {
+    width: 100vw;
+}
+
+// form {
+//     input {
+//         width: 80vw;
+//         padding: 12px 20px;
+//         margin: 8px 0;
+//         box-sizing: border-box;
+//     }
+// }
 
 .hidden {
     display: none;
@@ -146,15 +161,18 @@ h2 {
 
 @keyframes shakeCart {
     25% {
-      transform:translateX(6px)
+        transform: translateX(6px)
     }
+
     50% {
-      transform:translateX(-4px);
+        transform: translateX(-4px);
     }
+
     75% {
-      transform:translateX(2px);
+        transform: translateX(2px);
     }
+
     100% {
-      transform:translateX(0);
+        transform: translateX(0);
     }
-  }
+}
