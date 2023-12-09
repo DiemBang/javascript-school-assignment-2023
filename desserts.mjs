@@ -4,7 +4,7 @@ const desserts = [
         price: 42,
         amount: 0,
         category: 'Culinary', //ceremonial, premium or culinary
-        rating: 4, //scale 1-5
+        rating: 4.2, //scale 1-5
         image: {
             src: '../assets/images/brownies.png',
             alt: 'Matcha brownies with chocolate chip',
@@ -17,7 +17,7 @@ const desserts = [
         price: 48,
         amount: 0,
         category: 'Premium',
-        rating: 4,
+        rating: 4.5,
         image: {
             src: '../assets/images/cheesecake.png',
             alt: 'Matcha cheesecake',
@@ -30,7 +30,7 @@ const desserts = [
         price: 38,
         amount: 0,
         category: 'Culinary',
-        rating: 3,
+        rating: 3.5,
         image: {
             src: '../assets/images/cookie.png',
             alt: 'Matcha cookie with white chocolate chip',
@@ -43,7 +43,7 @@ const desserts = [
         price: 38,
         amount: 0,
         category: 'Culinary',
-        rating: 3,
+        rating: 3.7,
         image: {
             src: '../assets/images/donuts.png',
             alt: 'Matcha donuts',
@@ -56,7 +56,7 @@ const desserts = [
         price: 48,
         amount: 0,
         category: 'Premium',
-        rating: 4,
+        rating: 4.8,
         image: {
             src: '../assets/images/lavacake.png',
             alt: 'Gooey lava cake with matcha filling',
@@ -69,7 +69,7 @@ const desserts = [
         price: 48,
         amount: 0,
         category: 'Premium',
-        rating: 4,
+        rating: 4.2,
         image: {
             src: '../assets/images/macaroons.png',
             alt: 'Matcha macaroons',
@@ -95,7 +95,7 @@ const desserts = [
         price: 42,
         amount: 0,
         category: 'Premium',
-        rating: 2,
+        rating: 2.8,
         image: {
             src: '../assets/images/mochie.png',
             alt: 'Matcha mochie',
@@ -121,7 +121,7 @@ const desserts = [
         price: 58,
         amount: 0,
         category: 'Ceremonial',
-        rating: 4,
+        rating: 4.8,
         image: {
             src: '../assets/images/softserve.png',
             alt: 'Matcha soft serve icecream',
@@ -147,7 +147,7 @@ const desserts = [
         price: 52,
         amount: 0,
         category: 'Premium',
-        rating: 4,
+        rating: 4.3,
         image: {
             src: '../assets/images/rollCake.png',
             alt: 'Spongy and fluffy roll cake with matcha flavour',
