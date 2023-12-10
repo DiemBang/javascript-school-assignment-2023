@@ -3,7 +3,7 @@
 
 # JavaScript Fundamentals Interactive Webshop
 
-This is a school assignment in the course JavaScript - Fundamentals at Medieinstitutet as well as my first JavaScript project. The assignment is to create a basic and interactive webshop as a one page scroller site. 
+This was a school assignment in the course JavaScript - Fundamentals at Medieinstitutet as well as my first JavaScript project. The assignment was to create a basic and interactive webshop as a one page scroller site with focus on applying JavaScript for dynamic rendering. 
 
 Hope you enjoy exploring this JavaScript Basics Interactive Webshop and feel free to provide feedback!
 
