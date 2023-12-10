@@ -6,7 +6,7 @@ const desserts = [
         category: 'Culinary', //ceremonial, premium or culinary
         rating: 4.2, //scale 1-5
         image: {
-            src: '../assets/images/brownies.png',
+            src: 'assets/images/brownies.png',
             alt: 'Matcha brownies with chocolate chip',
             width: '100',
             height: '200',
@@ -19,7 +19,7 @@ const desserts = [
         category: 'Premium',
         rating: 4.5,
         image: {
-            src: '../assets/images/cheesecake.png',
+            src: 'assets/images/cheesecake.png',
             alt: 'Matcha cheesecake',
             width: '100',
             height: '200',
@@ -32,7 +32,7 @@ const desserts = [
         category: 'Culinary',
         rating: 3.5,
         image: {
-            src: '../assets/images/cookie.png',
+            src: 'assets/images/cookie.png',
             alt: 'Matcha cookie with white chocolate chip',
             width: '100',
             height: '200',
@@ -45,7 +45,7 @@ const desserts = [
         category: 'Culinary',
         rating: 3.7,
         image: {
-            src: '../assets/images/donuts.png',
+            src: 'assets/images/donuts.png',
             alt: 'Matcha donuts',
             width: '100',
             height: '200',
@@ -58,7 +58,7 @@ const desserts = [
         category: 'Premium',
         rating: 4.8,
         image: {
-            src: '../assets/images/lavacake.png',
+            src: 'assets/images/lavacake.png',
             alt: 'Gooey lava cake with matcha filling',
             width: '100',
             height: '200',
@@ -71,7 +71,7 @@ const desserts = [
         category: 'Premium',
         rating: 4.2,
         image: {
-            src: '../assets/images/macaroons.png',
+            src: 'assets/images/macaroons.png',
             alt: 'Matcha macaroons',
             width: '100',
             height: '200',
@@ -84,7 +84,7 @@ const desserts = [
         category: 'Ceremonial',
         rating: 5,
         image: {
-            src: '../assets/images/millefeuille.png',
+            src: 'assets/images/millefeuille.png',
             alt: 'Matcha mille feuille cake',
             width: '100',
             height: '200',
@@ -97,7 +97,7 @@ const desserts = [
         category: 'Premium',
         rating: 2.8,
         image: {
-            src: '../assets/images/mochie.png',
+            src: 'assets/images/mochie.png',
             alt: 'Matcha mochie',
             width: '100',
             height: '200',
@@ -110,7 +110,7 @@ const desserts = [
         category: 'Ceremonial',
         rating: 5,
         image: {
-            src: '../assets/images/pancakes.png',
+            src: 'assets/images/pancakes.png',
             alt: 'Fluffy matcha souffle pancakes',
             width: '100',
             height: '200',
@@ -123,7 +123,7 @@ const desserts = [
         category: 'Ceremonial',
         rating: 4.8,
         image: {
-            src: '../assets/images/softserve.png',
+            src: 'assets/images/softserve.png',
             alt: 'Matcha soft serve icecream',
             width: '100',
             height: '200',
@@ -136,7 +136,7 @@ const desserts = [
         category: 'Ceremonial',
         rating: 5,
         image: {
-            src: '../assets/images/tiramisu.png',
+            src: 'assets/images/tiramisu.png',
             alt: 'Creamy matcha tiramisu',
             width: '100',
             height: '200',
@@ -149,7 +149,7 @@ const desserts = [
         category: 'Premium',
         rating: 4.3,
         image: {
-            src: '../assets/images/rollCake.png',
+            src: 'assets/images/rollCake.png',
             alt: 'Spongy and fluffy roll cake with matcha flavour',
             width: '100',
             height: '200',
