@@ -2,15 +2,33 @@ body {
     font-family: 'Libre Franklin', sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #bdedb3;;
+        background: #17314c;
+
+        header {
+            background: #17314c;
+            color: #bdedb3;
+        }
+    }
+
+    
+}
+
 header {
     width: 100vw;
     height: 10vh;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
     background-color: white;
     color: green;
     position: fixed;
     top: 0;
     display: flex;
     align-items: center;
+    z-index: 999;
 }
 
 h1 {
@@ -49,57 +67,72 @@ main {
     margin: 1em;
 }
 
-* {box-sizing: border-box;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
+* {
+    box-sizing: border-box;
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100vw;
-  max-height: 30em;
-  position: relative;
-  margin: auto;
-  overflow: hidden;
+    max-width: 100vw;
+    max-height: 30em;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
 }
 
 /* Number text (1/3 etc) */
 .numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 }
 
 .active {
-  background-color: #717171;
+    background-color: #717171;
 }
 
 /* Fading animation */
 .fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
 }
 
 .intro {
-    margin-top: 6em;
+    margin-top: 8em;
     margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 h2 {
@@ -108,13 +141,15 @@ h2 {
 
 .page1 {
     width: 100vw;
+    margin: 1em;
 }
 
 .sort-by-icons img {
     display: inline-block;
 }
 
-.productListing { //flex container
+.productListing {
+    //flex container
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -129,7 +164,8 @@ h2 {
     }
 }
 
-.product { //flex items
+.product {
+    //flex items
     width: 300px;
     border: 1px solid black;
     box-shadow: 5px 10px #bdedb3;
@@ -151,6 +187,7 @@ h2 {
 
 .page2 {
     width: 100vw;
+    margin: 1em;
 }
 
 .product-in-cart img {
@@ -158,12 +195,19 @@ h2 {
     height: auto;
 }
 
+.product-in-cart button {
+    font-size: 1em;
+    width: 26px;
+    background-color: #bdedb3;
+    border-radius: 8px;
+}
+
 .page3 {
     width: 100vw;
+    margin: 1em;
 }
 
 form {
-    border: black;
 
     label {
         width: 8em;
