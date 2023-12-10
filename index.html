@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="rgb(172, 118, 255)">
-    <title>Matcha Munchies</title>
+    <meta name="description" content="Online dessert shop delivering indulgent matcha desserts right to your doorstep. Open Monday-Saturday 8-6pm.">
+    <title>Matcha Munchies - Sweet dreams are made of matcha</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,42 +113,42 @@
                     <p>Payment method</p>
                     <div class="payment-options">
                         <div class="selector">
-                            <label>
+                            <label for="invoiceBtn">
                                 <span>Invoice</span>
                                 <span role="alert" id="invoiceError"></span>
                             </label>
 
                             <input type="radio" name="payment-option" value="invoice" id="invoiceBtn">
                             <br>
-                            <label>
+                            <label for="cardBtn">
                                 <span>Card</span>
                             </label>
 
-                            <input type="radio" name="payment-option" value="card" checked>
+                            <input type="radio" name="payment-option" value="card" id="cardBtn" checked>
                         </div>
 
                         <div class="invoice hidden" id="invoice">
-                            <label>
+                            <label for="personalID">
                                 <span>Personal ID number</span>
                             </label>
                             <input type="text" name="personal-id" id="personalID" value="19850505-1234">
                             <div role="alert" id="personalIdError"></div>
                         </div>
                         <div class="card" id="card">
-                            <label>
+                            <label for="creditCardNumber">
                                 <span>Card number</span>
                             </label>
                             <input type="number" id="creditCardNumber" value="5100080000000000"><br>
-                            <label>
+                            <label for="creditCardMonth">
                                 <span>Expiry date</span>
                             </label>
                             <input type="number" class="small" placeholder="MM" id="creditCardMonth">
                             /
-                            <label>
+                            <label for="creditCardYear">
                                 <input type="number" class="small" placeholder="YY" id="creditCardYear"><br>
                             </label>
                             <br>
-                            <label>
+                            <label for="creditCardCvc">
                                 <span>CVC</span>
                             </label>
                             <input type="number" placeholder="123" id="creditCardCvc">
