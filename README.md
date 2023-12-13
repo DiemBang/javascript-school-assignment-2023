@@ -19,12 +19,12 @@ Hope you enjoy exploring this JavaScript Basics Interactive Webshop and feel fre
 **Accessibility:** The webshop is crafted to be inclusive, considering users with diverse needs. Features have been implemented that ensure easy navigation and readability for all visitors.
 
 **Getting Started:**
-To explore the webshop, simply open the provided HTML index file in your preferred web browser. Navigate through through scrolling, interact with product details, and experience the responsiveness of the site.
+To explore the webshop, simply open the provided HTML index file in your preferred web browser. Navigate through scrolling, interact with product details, and experience the responsiveness of the site.
 
 **Validation:** Each field in the Checkout form has been validated using RegEx.
 
 # Technologies Used:
-**HTML5:** Providing the structure for our web pages. 
+**HTML5:** Providing the structure for the web pages. 
 
 **CSS and SASS:** Styling the webshop for an appealing and intuitive layout.
 
