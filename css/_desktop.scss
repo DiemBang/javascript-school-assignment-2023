@@ -1,0 +1,20 @@
+h1 {
+    padding-left: 18em;
+    padding-right: 18em;
+    font-size: 1.6em;
+}
+
+form {
+    input {
+        width: 20em;
+    }
+
+    input[type="radio"] {
+        width: 3em;
+    }
+    
+    input[type="checkbox"] {
+        width: 1em;
+    }
+
+}
