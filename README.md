@@ -9,7 +9,7 @@ Hope you enjoy exploring this JavaScript Basics Interactive Webshop and feel fre
 
 **Link to project:** https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-DiemBang/
 
-# Features:
+## Features
 **Interactive Design:** The webshop offers a simple, dynamic and intuitive interface, allowing visitors to seamlessly explore and interact with a variety of products.
 
 **Responsiveness:** The site has a responsive design to ensure a consistent and enjoyable experience across different devices, adapting to various screen sizes for accessibility.
@@ -23,24 +23,24 @@ To explore the webshop, simply open the provided HTML index file in your preferr
 
 **Validation:** Each field in the Checkout form has been validated using RegEx.
 
-# Technologies Used:
+## Technologies Used
 **HTML5:** Providing the structure for the web pages. 
 
 **CSS and SASS:** Styling the webshop for an appealing and intuitive layout.
 
 **JavaScript:** Powering the interactivity and dynamic features of the webshop.
 
-# Validation reports
+## Validation Reports
 
-## HTML:
+### HTML:
 
 ![Alt text](validation/HTML_validation.png?raw=true "HTML Validation Report")
 
-## CSS
+### CSS:
 
 ![Alt text](validation/CSS_validation.png?raw=true "CSS Validation Report")
 
-## Google Lighthouse report analysing Accessibility, Best Practices and SEO
+### Google Lighthouse Report on Accessibility, Best Practices and SEO:
 
 (Desktop)
 ![Alt text](validation/Lighthouse_desktop.png?raw=true "Google Lighthouse Report")
